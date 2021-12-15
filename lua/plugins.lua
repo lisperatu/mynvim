@@ -8,9 +8,9 @@ return require('packer').startup(function()
     use 'mattn/emmet-vim'
     use 'bling/vim-airline'
     use 'vim-airline/vim-airline-themes'
-    use 'scrooloose/nerdtree'
     use 'Xuyuanp/nerdtree-git-plugin'
     use 'ggandor/lightspeed.nvim'
+    use 'petobens/poet-v' 
     use {
         'hrsh7th/cmp-nvim-lsp',
         config = function ()
@@ -35,13 +35,11 @@ return require('packer').startup(function()
     use 'scrooloose/syntastic'
     use 'nvie/vim-flake8'
     use 'vim-perl/vim-perl'
-    use 'mattn/emmet-vim'
     use 'shougo/denite.nvim'
     use 'vim-vdebug/vdebug' 
     use 'jwalton512/vim-blade'
     use 'posva/vim-vue'
     use 'liuchengxu/vim-which-key'
-    use 'dense-analysis/ale'
     use 'SkyLeach/pudb.vim'
     use 'rust-lang/rust.vim'
     use 'jiangmiao/auto-pairs' 
