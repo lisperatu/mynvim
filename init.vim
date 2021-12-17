@@ -48,13 +48,6 @@ let mapleader = "\<Space>"
 set laststatus=2 
 set number relativenumber
 set numberwidth=5
-map <leader>t :NERDTreeToggle<CR>
-map <leader>b :CtrlPBuffer<CR>
-map <leader>f :CtrlP<CR>
-map <leader>gs :Gstatus<CR>
-map <leader>gp :Gpush<CR>
-map <leader>Fc :find ~/.config/nvim/init.vim<CR>
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " colorscheme elflord
 highlight Pmenu ctermfg=Gray   
 let g:neocomplete#enable_at_startup = 1

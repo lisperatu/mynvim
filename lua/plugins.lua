@@ -40,6 +40,13 @@ return require('packer').startup(function()
     use 'jwalton512/vim-blade'
     use 'posva/vim-vue'
     use 'liuchengxu/vim-which-key'
+    use {
+      "folke/which-key.nvim",
+      config = function()
+         require("which-key").setup {
+         }
+     end
+    }
     use 'SkyLeach/pudb.vim'
     use 'rust-lang/rust.vim'
     use 'jiangmiao/auto-pairs' 
