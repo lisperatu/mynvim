@@ -1,4 +1,3 @@
-set nocompatible              " be iMproved, required
 " call plug#begin()
 " Plug 'tpope/vim-fugitive'
 " Plug 'mhinz/vim-signify'
@@ -44,11 +43,6 @@ set nocompatible              " be iMproved, required
 " Plug 'jacoborus/tender.vim'
 " call plug#end()            " required
 filetype plugin indent on    " required
-let mapleader = "\<Space>"
-set laststatus=2 
-set number relativenumber
-set numberwidth=5
-" colorscheme elflord
 highlight Pmenu ctermfg=Gray   
 let g:neocomplete#enable_at_startup = 1
 let g:virtualenv_directory = '/home/sasha/work'
@@ -59,20 +53,9 @@ if !exists("g:vdebug_options")
 endif
 let g:vdebug_options["marker_open_tree"] = '-'
 let g:vdebug_options["marker_closed_tree"] = '+'
-set foldmethod=indent
-set foldlevel=99
-set tabstop=4 
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set fileformat=unix
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-set encoding=utf-8
 let python_highlight_all=1
-syntax on
-
 
 " Php/laravel stuff
 autocmd BufNewFile,BufRead *.blade.php set ft=blade
@@ -102,14 +85,8 @@ augroup end
 
 " set the CN (column number) symbol:
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
-let g:airline_theme ='solarized'
-let g:airline_solarized_bg='dark'
 
-if (has("termguicolors"))
- set termguicolors
-endif
 let g:airline_theme = 'tender'
-colorscheme tender
 hi Normal guibg=NONE ctermbg=NONE
 
 noremap <F12> <Esc>:syntax sync fromstart<CR>
@@ -120,6 +97,9 @@ if exists("g:ctrlp_user_command")
 endif
 set wildignore+=*/vendor,*/.git/,*/node_modules,*/eggs
 
+
+
 "source ~/.config/nvim/coc.vim
+lua require'lisperatu.options'
 lua require'plugins'
 lua require'other'

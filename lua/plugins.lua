@@ -11,6 +11,12 @@ return require('packer').startup(function()
     use 'Xuyuanp/nerdtree-git-plugin'
     use 'ggandor/lightspeed.nvim'
     use 'petobens/poet-v' 
+    
+
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
     use {
         'hrsh7th/cmp-nvim-lsp',
         config = function ()
@@ -23,23 +29,19 @@ return require('packer').startup(function()
     
     use {
         'scrooloose/nerdtree',
-        config = function () vim.api.nvim_set_keymap('n', '<C-n>', ':NeoTreeToggle<CR>') end
+        config = function () vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', {}) end
 
     }
     use 'ctrlpvim/ctrlp.vim'
     use 'vim-scripts/Smart-Tabs'
     use 'christoomey/vim-tmux-navigator'
-    use 'jmcantrell/vim-virtualenv'
     use 'wikitopian/hardmode'
-    use 'vim-scripts/indentpython.vim'
-    use 'scrooloose/syntastic'
     use 'nvie/vim-flake8'
     use 'vim-perl/vim-perl'
     use 'shougo/denite.nvim'
     use 'vim-vdebug/vdebug' 
     use 'jwalton512/vim-blade'
     use 'posva/vim-vue'
-    use 'liuchengxu/vim-which-key'
     use {
       "folke/which-key.nvim",
       config = function()
@@ -56,5 +58,8 @@ return require('packer').startup(function()
     use 'nightsense/stellarized'
     use 'morhetz/gruvbox'
     use 'jacoborus/tender.vim'
+    use 'EdenEast/nightfox.nvim'
+    use 'savq/melange'
+    use 'sainnhe/sonokai'
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 end)
