@@ -23,5 +23,6 @@ for k,v in pairs(options) do
 end
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 vim.cmd "colorscheme OceanicNext"
 vim.cmd "syntax on"
