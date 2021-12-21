@@ -32,6 +32,22 @@ return require('packer').startup(function()
         config = function () vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', {}) end
 
     }
+    
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function ()
+            local null_ls = require('null-ls')
+            null_ls.setup({
+                on_attach = function(client)
+                    if client.resolved_capabilities.document_formatting then
+                        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+                    end
+                end,
+                sources = { null_ls.builtins.formatting.prettier, null_ls.builtins.formatting.black }
+            })
+        end
+    }
+    
     use 'ctrlpvim/ctrlp.vim'
     use 'vim-scripts/Smart-Tabs'
     use 'christoomey/vim-tmux-navigator'

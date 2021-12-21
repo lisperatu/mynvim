@@ -97,6 +97,7 @@ keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR
 keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>', opts)
 --keymap('n', '<leader>', '<cmd>:WhichKey <space><CR>', opts)
 
 keymap('n', '<leader>b', ':CtrlPBuffer<CR>', opts)
