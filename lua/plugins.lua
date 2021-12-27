@@ -58,6 +58,12 @@ return require('packer').startup(function()
     use 'vim-vdebug/vdebug' 
     use 'jwalton512/vim-blade'
     use 'posva/vim-vue'
+    
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
     use {
       "folke/which-key.nvim",
       config = function()
