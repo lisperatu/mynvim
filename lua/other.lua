@@ -112,13 +112,12 @@ require'which-key'.setup{}
 -- Set some keybinds conditional on server capabilities
 keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
+
 local servers = {
     'vuels',
-    'pyright',
     'tsserver',
     'html',
     'dockerls',
-    'pylsp',
     'graphql',
     'sqls'
 }
@@ -128,7 +127,18 @@ for _, lsp in ipairs(servers) do
     }
 end
 
-require'lspconfig'.sumneko_lua.setup {
+local function res_capabilities(client)
+    local crc = client.resolved_capabilities
+    crc.document_formatting = false
+    crc.document_range_formatting = false
+end
+
+nvim_lsp.pylsp.setup {
+    capabilities = capabilities,
+    on_attach = res_capabilities
+}
+
+nvim_lsp.sumneko_lua.setup {
     -- ... other configs
     capabilities = capabilities,
     settings = {
