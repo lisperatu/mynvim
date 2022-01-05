@@ -103,3 +103,7 @@ set wildignore+=*/vendor,*/.git/,*/node_modules,*/eggs
 lua require'lisperatu.options'
 lua require'plugins'
 lua require'other'
+
+set guifont=Hasklig\ Light:h8
+set mouse=ncir
+set mouse=a
