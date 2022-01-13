@@ -178,3 +178,19 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = true,
   },
 }
+
+
+-- rust and debugging
+local rustopts = {
+    runnables = {
+        use_telescope = true,
+    },
+    debuggables = {
+        use_telescope = true,
+    },
+    
+    autoSetHints = true,
+    hover_with_actions = true,
+}
+
+require('rust-tools').setup(rustopts)

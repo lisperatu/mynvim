@@ -65,7 +65,7 @@ return require('packer').startup(function()
     use 'vim-vdebug/vdebug' 
     use 'jwalton512/vim-blade'
     use 'posva/vim-vue'
-    use 'stevearc/dressing.nvim'
+    -- use 'stevearc/dressing.nvim'
     
     use {
         'nvim-telescope/telescope.nvim',
@@ -81,6 +81,13 @@ return require('packer').startup(function()
     }
     use 'SkyLeach/pudb.vim'
     use 'rust-lang/rust.vim'
+    use {
+        'simrat39/rust-tools.nvim',
+        config = function() 
+            require('rust-tools').setup({})
+        end
+    }
+    use 'mfussenegger/nvim-dap'
     use 'jiangmiao/auto-pairs' 
     
     -- themes
@@ -95,4 +102,7 @@ return require('packer').startup(function()
     if packer_bootstrap then
         require('packer').sync()
     end
+    
+
+    
 end)
