@@ -40,20 +40,6 @@ return require('packer').startup(function()
 
     }
     
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        config = function ()
-            local null_ls = require('null-ls')
-            null_ls.setup({
-                on_attach = function(client)
-                    if client.resolved_capabilities.document_formatting then
-                        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-                    end
-                end,
-                sources = { null_ls.builtins.formatting.prettier, null_ls.builtins.formatting.black }
-            })
-        end
-    }
     
     use 'ctrlpvim/ctrlp.vim'
     use 'vim-scripts/Smart-Tabs'
@@ -71,6 +57,23 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    
+    use {
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() 
+            require'trouble'.setup{
+                signs = {
+                    -- icons / text used for a diagnostic
+                    error = "",
+                    warning = "",
+                    hint = "",
+                    information = "",
+                    other = "﫠"
+                },
+            }
+        end
+    }
 
     use {
       "folke/which-key.nvim",
@@ -87,6 +90,7 @@ return require('packer').startup(function()
             require('rust-tools').setup({})
         end
     }
+    use 'jbyuki/one-small-step-for-vimkind'
     use 'mfussenegger/nvim-dap'
     use 'jiangmiao/auto-pairs' 
     
@@ -104,5 +108,6 @@ return require('packer').startup(function()
     end
     
 
+    
     
 end)

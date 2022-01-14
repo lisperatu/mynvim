@@ -135,7 +135,10 @@ end
 
 nvim_lsp.pylsp.setup {
     capabilities = capabilities,
-    on_attach = res_capabilities
+    on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+    end
 }
 
 nvim_lsp.sumneko_lua.setup {
@@ -194,3 +197,64 @@ local rustopts = {
 }
 
 require('rust-tools').setup(rustopts)
+
+local dap = require"dap"
+dap.configurations.lua = {
+  {
+    type = 'nlua', 
+    request = 'attach',
+    name = "Attach to running Neovim instance",
+    host = function()
+      local value = vim.fn.input('Host [127.0.0.1]: ')
+      if value ~= "" then
+        return value
+      end
+      return '127.0.0.1'
+    end,
+    port = function()
+      local val = tonumber(vim.fn.input('Port: '))
+      assert(val, "Please provide a port number")
+      return val
+    end,
+  }
+}
+
+dap.adapters.nlua = function(callback, config)
+  callback({ type = 'server', host = config.host, port = config.port })
+end
+
+
+
+
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
+  {silent = true, noremap = true}
+)
+
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+
+local telescope = require("telescope")
+
+telescope.setup {
+  defaults = {
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
+    },
+  },
+}
